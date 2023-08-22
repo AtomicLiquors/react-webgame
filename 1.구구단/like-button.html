@@ -13,9 +13,11 @@
   const e = React.createElement;
 
   class LikeButton extends React.Component {
+
     constructor(props) {
       super(props);
       this.state = {liked: false};
+      //this.onClickButton = this.onClickButton.bind(this);
     }
 
     render() {
@@ -25,16 +27,26 @@
 
       //return e('button', {onClick: () => this.setState({liked: true})}, 'Like');
       return (
-        <button onClick={()=>{this.setState({liked: true});}}>
-          Like
-        </button>
+        <>
+          <button onClick={()=>{this.setState({liked: true});}}>
+            {this.state.liked ? 'Liked' : 'Like!'}
+          </button>
+          <input type="text"/>
+        </>
       );
     }
   }
 </script>
 <script type="text/babel">
   //ReactDOM.render(e(LikeButton), document.querySelector('#root'));
-  //ReactDOM.createRoot(document.querySelector('#root')).render();
+  ReactDOM.createRoot(document.querySelector('#root')).render(
+    <div>
+      <LikeButton/>
+      <LikeButton/>
+      <LikeButton/>
+      <LikeButton/>
+    </div>
+  );
 </script>
 </body>
 </html>
